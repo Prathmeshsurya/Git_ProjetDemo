@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Management System</title>
+<style>
+body { font-family: Arial; background: #eef2f7; margin: 0; }
+header { background: #163a5f; color: white; text-align: center; padding: 20px; }
+.container { width: 80%; margin: 25px auto; background: white; padding: 20px; border-radius: 10px; }
+input, select { padding: 10px; margin: 7px; width: 40%; border: 1px solid #ccc; border-radius: 5px; }
+button { background: #176b55; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+th { background: #163a5f; color: white; }
+tr:nth-child(even) { background: #f2f5f8; }
+</style>
+</head>
+<body>
+<header><h1>Student Management System</h1><p>Manage Student Information</p></header>
+<div class="container">
+<h2>Add Student</h2>
+<form id="studentForm">
+<input id="sid" placeholder="Student ID" required>
+<input id="name" placeholder="Student Name" required>
+<input id="course" placeholder="Course" required>
+<input id="email" type="email" placeholder="Email" required>
+<button type="submit">Add Student</button>
+</form>
+<h2>Student Records</h2>
+<table>
+<thead><tr><th>ID</th><th>Name</th><th>Course</th><th>Email</th></tr></thead>
+<tbody id="records">
+<tr><td>101</td><td>Prathmesh</td><td>B.Tech</td><td>student@example.com</td></tr>
+</tbody>
+</table>
+</div>
+<script>
+document.getElementById("studentForm").onsubmit = function(e) {
+e.preventDefault();
+let id = document.getElementById("sid").value;
+let name = document.getElementById("name").value;
+let course = document.getElementById("course").value;
+let email = document.getElementById("email").value;
+let row = document.getElementById("records").insertRow();
+[id, name, course, email].forEach(value => {
+let cell = row.insertCell();
+cell.textContent = value;
+});
+this.reset();
+};
+</script>
+</body>
+</html>
